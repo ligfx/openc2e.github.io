@@ -1,0 +1,94 @@
+---
+layout: default
+title: Developers
+---
+
+<img src="images/headeregg.png" /> <span class="header">git</span>
+<p>Currently, the best way of getting openc2e is downloading the source code via
+  <a href="http://git.or.cz/">git</a>, a popular version control system.</p>
+<p>On a machine with the official git client installed, you can acquire the source with the
+  following command:</p>
+<div class="code">git clone git://github.com/ccdevnet/openc2e.git openc2e</div>
+<p>If successful, this will pull the most recent source code into a 'openc2e' folder
+  in the current directory. Once you've done that once, you can later update to the latest
+  version by running the following command from inside the 'openc2e' folder:
+</p>
+<div class="code">git pull</div>
+<p>If you don't want to use the a git client, you can visit the
+<a href="http://github.com/ccdevnet/openc2e/">openc2e github page</a> and click the
+'Download' link to get an archive of the latest source.</p>
+
+<img src="images/headeregg.png" /> <span class="header">Requirements</span>
+<p>In order to build a copy of openc2e on a unix-based system, you will need the
+  following software installed:
+</p>
+<ul>
+  <li><a href="http://gcc.gnu.org">gcc and g++</a> version 3.3 or higher</li>
+  <li><a href="http://perl.org">Perl</a></li>
+  <li>GNU 
+   <a href="http://www.gnu.org/software/bison/">bison</a></li>
+  <li><a href="http://re2c.org">re2c</a> (0.12.x or higher)</li>
+  <li><a href="http://www.zlib.net/">zlib</a></li>
+  <li>the <a href="http://search.cpan.org/dist/YAML/">YAML</a> Perl library
+    (from <a href="http://cpan.org">CPAN</a>)</li>
+  <li>for OpenAL support (recommended), <a href="http://www.openal.org/downloads.html">OpenAL and ALUT</a></li>
+  <li>the <a href="http://www.libsdl.org">Simple DirectMedia Layer (SDL)</a> library, 
+    as well as the <a href="http://www.libsdl.org/projects/SDL_net">SDL_net</a>,
+    <a href="http://www.libsdl.org/projects/SDL_ttf/">SDL_ttf</a> and
+    <a href="http://www.ferzkopp.net/joomla/content/view/19/14/">SDL_gfx</a> libraries.</li>
+    <!--<a href="http://www.libsdl.org/projects/SDL_mixer">SDL_mixer</a> libraries-->
+  <li>the <a href="http://www.boost.org">Boost</a> C++ libraries, at least 1.34 (pretty much most of 
+    them)</li>
+  <li><a href="http://www.cmake.org/">cmake</a> for building
+  <li><a href="http://trolltech.com/products/qt">Qt 4</a> (4.3 or above) for the GUI (which you can do without, sort of)</li>
+</ul>
+
+<p>On <a href="http://debian.org">Debian</a>, these can be taken care of with a single
+  command:
+</p>
+<div class="code">apt-get install libyaml-perl libsdl1.2debian-all libsdl1.2-dev libopenal-dev libalut-dev
+  libboost-filesystem-dev libsdl-net1.2-dev libsdl-gfx1.2-dev libsdl-ttf2.0-dev re2c
+  bison zlib1g-dev libboost-iostreams-dev libboost-thread-dev libboost-serialization-dev
+  libboost-program-options-dev libboost-regex-dev libqt4-dev build-essential perl cmake</div> 
+
+<p>On <a href="http://www.apple.com/macosx/">Mac OS X</a> 10.5, you need to install the following:</p>
+<ul>
+<li>XCode, from your OS X install DVD</li>
+<li>cmake, from one of the cmake-provided disk images</li>
+<li>Qt 4, from the official disk image</li>
+<li>SDL, SDL_ttf and SDL_net, from the official disk images</li>
+<li>SDL_gfx, built as a framework from source code</li>
+<li>YAML, from CPAN</li>
+<li>re2c, built from source code</li>
+<li>boost, built from source code</li>
+<li>OpenAL, from the official disk image (this does not actually work right now, before running 'make', you will need to run 'ccmake ..' from the build directory and change the configuration to disable OpenAL)</li>
+</ul>
+
+<img src="images/headeregg.png" /> <span class="header">Building</span>
+<p>As soon as you've installed everything you need, you then run the following:
+</p>
+<div class="code">mkdir build &amp;&amp; cd build</div>
+<div class="code">cmake ..</div>
+<p>This will make and move into a directory called build, ensure that you have everything you need
+ and create a makefile for the build.</p>
+
+<p>To start the actual build, follow this up with:</p>
+<div class="code">make</div>
+<p>Yes, it's that easy!  The build process will run automatically. 
+  If the compile is successful, it will produce an executable called 'openc2e'.  But before
+  you can run it, you must make a link to your Creatures data files in the build directory,
+  like so:
+</p>
+<div class="code">ln -s '/path/to/creatures/folder' data</div>
+<p>After that, you can just run...
+</p>
+<div class="code">./openc2e</div>
+<p>... and watch it load!  The 'data' link can be changed to the folder of any supported
+  Creatures game (currently C1, C2, C3 and DS).  Alternatively, you can run something like the
+  following:  
+</p>
+<div class="code">./openc2e -d '/path/to/creatures/folder'</div>
+<p>...rather than creating the data link.  Also, you can try the '-h' flag for a list of
+  other available flags.  For docking C3 and DS, add a -d for the path for both games in
+  that order. Have fun.
+</p>
