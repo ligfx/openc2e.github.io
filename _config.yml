@@ -1,0 +1,13 @@
+title: openc2e
+description: 
+url: https://openc2e.github.io/
+plugins:
+- jekyll-default-layout
+- jekyll-feed
+- jekyll-paginate
+- jekyll-seo-tag
+- jekyll-sitemap
+feed:
+    path: /atom.xml
+paginate: 3
+paginate_path: "/page:num/"

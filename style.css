@@ -1,8 +1,4 @@
-/* openc2e.org - CSS */
-
-
-/* Overall styles */
-* {  /* Kill all margins/padding */
+* {
     padding: 0;
 	margin: 0;
 }
@@ -10,108 +6,139 @@
 body {
     font-family: Verdana, "Trebuchet MS", Arial, sans-serif;
     font-size: 15px;
-	background: #cccccc url(images/gp.png) repeat;
-	padding-bottom: 10px; /* stupid IE, wtf */
+    /* font-size: 1em; */
+    background: rgb(252, 235, 213);
+	padding-bottom: 10px;
+    display: flex;
+    flex-wrap: wrap
 }
 
-/* Divs */
-
-#header {
+header {
     margin-top: 10px;
-	margin-left: auto;
-	margin-right: auto;
-    width: 942px;
-	height: 179px;
-	background: #cccccc /*url(images/header.png) top left*/;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    width: 100%;
+    text-align: center;
 }
 
-#middle {
-    margin-left: auto;
-	margin-right: auto;
-	padding: 20px;
-	width: 902px;
-	min-height: 300px;
-	background: #ffffff;
+header a:link, header a:visited, header a:active, header a:hover {
+    color: rgb(140, 82, 102);
+    text-decoration: none;
 }
 
-#content-container {
-	float: left;
-	width: 700px;
-    /* text-align: center; */ /* eew */
-}
-#navbar-container {
-	float: right;
-	width: 180px;
-}
-
-#navbar-top {
-	margin-left: auto;
-	margin-right: auto;
-	width: 177px;
-	height: 24px;
-	background: #ffffff url(images/sidebar-top.png);
+@media only screen and (min-width: 420px) {
+    /* we can start showing the logo next to the header text now */
+    header #logo {
+        float: left;
+        position: relative;
+        top: 0;
+        z-index: 1000;
+    }
+    header {
+        margin-left: 0;
+        text-align:left;
+    }
 }
 
-#navbar-content {
-	margin-left: auto;
-	margin-right: auto;
-	width: 157px;
-	padding-left: 10px;
+@media only screen and (min-width: 650px) {
+    /* large enough to show the header text properly, which means we can float the logo */
+    section#content {
+        margin-top: -30px;
+    }
+    nav {
+        margin-top: -30px;
+    }
+    article:first-child p:first-child {
+        margin-top: 10px;
+    }
+    article.post:first-child {
+        padding-top: 30px;
+    }
+    /* large enough to make the footer slightly smaller */
+    footer {
+        font-size: 0.9em;
+    }
+}
+
+@media only screen and (min-width: 800px) {
+    /* large enough to show the center the content and show nav on the right side */
+    body {
+        min-width: 800px;
+        max-width: 950px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    section#content {
+        flex: 1 0 600px;
+    }
+    nav {
+        width: 180px;
+    }
+}
+
+section#pagination {
+    display: flex;
+}
+#pagination-left {
+    flex: 1;
+    padding-left: 1em;
+}
+#pagination-right {
+    flex: 1;
+    text-align: right;
+    padding-right: 1em;
+}
+
+nav {
+	padding-left: 20px;
 	padding-right: 10px;
 	padding-top: 5px;
-	padding-bottom: 1px;
-	min-height: 200px;
-	background: #ffffff url(images/gp.png) repeat;
+	color: #772d56;
 }
 
-#navbar-bottom {
-	margin-left: auto;
-	margin-right: auto;
-	width: 177px;
-	height: 24px;
-	background: #ffffff url(images/sidebar-bot.png);
+nav h2 {
+    font-size: 1em;
+    font-weight: bold;
 }
 
-#footer {
-	margin-left: auto;
-	margin-right: auto;
-    width: 942px;
-	height: 120px;
-	background: #cccccc url(images/footer.png) top left;
-	text-align: center;
-	padding-top: 40px;
-}
-
-div.news {
-    margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-div.sshot {
-    width: 309px;
-	padding-left: 20px;
-	padding-right: 20px;
+footer {
 	margin-top: 10px;
-	margin-bottom: 10px;
-	font-size: 11px;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding-bottom: 1em;
 }
 
-/* Text styles */
+article {
+    padding: 20px;
+    margin-bottom: 20px;
+    background: #ffffff;
+}
 
-p{
+article p:first-child {
+    margin-top: 0;
+}
+
+article::after {
+    clear: both;
+    display: table;
+    content: "";
+}
+
+article img {
+    max-width: 100%;
+}
+
+p {
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
 
 a:link, a:visited, a:active {
-	color: #772d56;
-	text-decoration: none;
-	border-bottom: 1px dotted #772d56;
+    color: rgb(140, 82, 102);
 }
-
 a:hover {
-    border-bottom: 0;
-    text-decoration: underline;   
+    text-decoration: underline;
 }
 
 li {
@@ -124,30 +151,20 @@ span.enlarge {
 	font-size: 18px;
 }
 
-span.header {
-    font-size: 22px;
-}
-
-span.footer {
-	color: #772d56;
-	font-size: 11px;
-	vertical-align: middle;
-	text-align: center;
-}
-
-span.newsh {
-	line-height: 10px;
-    font-size: 16px;
+article h1 {
+    font-size: 1.3em;
 	font-weight: bold;
-	border-bottom: 1px dashed #772d56;
 }
 
-span.newsbyline {
-   font-size: 15px;
-   color: #772d56;
+article .byline {
+   color: #666;
 }
 
-div.code {
+article .byline address {
+    display: inline;
+}
+
+/* div.code {
     border: 1px dashed #772d56;
     padding: 3px;
 	padding-left: 5px;
@@ -155,32 +172,4 @@ div.code {
 	clear: both;
     background-color: #e4c2d5;
     font-family: tt, courier, monospace;
-}
-
-ul.navbar {
-    list-style: disc url(images/bulletegg.gif) inside;
-	font-size: 19px;
-	color: #772d56;
-}
-
-li.navbar {
-	margin-left: 0px;
-    margin-bottom: 15px;
-}
-
-/* Misc */
-img.frontsshot {
-    float: right;
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-img.gameabout {
-    float: right;
-	padding-right: 15px;
-	padding-left: 15px;
-}
-
-img {
-    border: 0px;
-}
+} */
